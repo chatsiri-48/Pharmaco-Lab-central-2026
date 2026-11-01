@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<base target="_top">
+<title>Lab Stock</title>
+<meta name="theme-color" content="#1f5fbf">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <style>
@@ -164,6 +167,26 @@
 <div id="dlg" class="hidden" role="dialog" aria-modal="true"><div class="box"><p id="dlgMsg"></p><div class="row"><button class="b sec" id="dlgNo">Cancel</button><button class="b" id="dlgYes">OK</button></div></div></div>
 
 <script>
+/* GitHub Pages build: talk to the Apps Script API with fetch (no Google cookies) */
+window.LABSTOCK_API = "https://script.google.com/macros/s/AKfycbwsFufREWb9EXLlwAN_qfPp_vdsH_S4vy_b8MkMpP9qKFSVQgmlDChbyg8oQ5LqZM79/exec";
+window.google = { script: { run: new Proxy({}, { get: function (_, first) {
+  var ok = null, bad = null;
+  var p = new Proxy({}, { get: function (_, k) {
+    if (k === 'withSuccessHandler') return function (f) { ok = f; return p; };
+    if (k === 'withFailureHandler') return function (f) { bad = f; return p; };
+    return function () {
+      var args = Array.prototype.slice.call(arguments);
+      fetch(window.LABSTOCK_API, { method: 'POST', credentials: 'omit', redirect: 'follow', cache: 'no-store',
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify({ fn: k, args: args }) })
+        .then(function (r) { if (!r.ok) throw new Error('Server error ' + r.status); return r.text(); })
+        .then(function (t) { if (t.charAt(0) === '<') throw new Error('The server returned a web page instead of data. Check that the Apps Script is deployed with access “Anyone”.'); ok && ok(t); })
+        .catch(function (e) { bad && bad(e && e.message ? e : new Error(String(e))); });
+    };
+  } });
+  return p[first];
+} }) } };
+</script>
+<script>
 
 window.__APP_OK = false; window.__BOOT_ERR = null; window.__LH = "45h,1uo41ff,*,*,*,xbkqmt,k6w1y3,45h,2ltbl8,idm46q,1oxmdqi,1a6htbt,h1aq9i,kameug,45h,45h,5sk3mm,1oqot92,u7qxr3,bobx4i,y8409z,15bqelc,12wbyrr,fz7bpw,1om0j7t,45h,45h,45h,45h,1dru6ki,30n4q1,9jay5q,1slr90a,114x1fs,hvw3j6,sxsley,1u9qaiq,m6rm1d,kq7jyx,wde3s3,3o8rac,375ig2,rdyb0v,gj3apt,1h066fs,1u3rc6m,175g77i,1y8bp3u,z055ki,375ig2,ljlq30,sxjvcl,1k6ei7i,yixusd,3t42,dek9se,1nb6r4f,1i28pe1,1uwau01,havmmb,cilc19,1byz2i5,45h,1u501mo,1yv1zbq,v7mrqt,14xjwb2,90gs1m,1jak7gx,m9vo64,199fatc,1uh0qpi,2v8bza,3t42,45h,zyjsbb,n9a2l3,far276,45h,45h,1bqs1x8,odweb2,1ja07zc,bkngns,1q3ifwz,cbwzhj,3t42,45h,wapa67,45h,1aeouhf,gd6jhw,17pr02b,4pp52u,1djvud1,1xzvfof,12ij70o,1nflijl,1tusoqg,3jesgu,1026mgo,2v8bza,3t42,bmpxyf,14se6im,14zjs2l,3t42,1eqwnmr,4n3hih,45h,45h,12ucn3d,1wagyvz,1rcvhxj,tzgck9,v4yg3k,ky8k10,8bgedy,oqky00,56gz67,375ig2,3t42,s18yd,th5afe,16xsf9b,55ahu0,w5hmk7,1ar7v5d,21gnqv,13x9p69,3t42,45h,1vbd5wi,1v4ksfa,1kc1jjd,53hu2k,18j9lz7,w7vrp4,cfqbwi,1wsb30b,1xd5dpr,1i8hdtf,n9g30c,1fyncqd,3t42,1lhm4ba,1qozal1,i7nrbs,68tx62,13u7qum,ex4qc9,j4ga8y,7ju108,17plfzq,gqjdhl,2i234m,1inly4w,1o0tbuo,ljccre,sfbhbh,ss67p4,j85s2t,ijfxmt,9o81j3,3t42,99s8g6,1i1ga5t,iw0d0s,1nzlxph,1in3med,1fvyu7t,l30s7u,1hqjj5a,18g74k9,375ig2,b69upe,1dke7ch,uu8tdy,75509g,ed3gzn,1xcv5o6,17735z0,4p1mpv,o9zx4,i4wj2l,rmwlou,swqmbg,d5s45o,r02qww,45h,45h,sl6y3y,1j2wqa,t7dfnb,rkkms9,hnb8jm,16ecqap,t3v482,1qay747,17v96aa,3hny5,168e96i,vgffw7,9ubm9g,yte65t,alen1x,1tnjg67,9484dl,83f4iw,g4j80l,3z22lc,3t42,45h,45h,1elu3j,1maq578,yvrir9,j62lme,3t42,5rjcfv,s3xlqo,rtlqgd,15ge45m,1yu97n7,17nda3x,19w03p5,1ayd69a,138kdzn,3vxccs,1xjhhgr,9ug6ng,3t42,za0ept,1u7vu7k,1r49x3c,ifg1tp,168aswu,1hj0tc3,1lpizan,3t42,uo4ag6,1t6gpoa,1iot7v9,1x41kqz,4p1mpv,1y2vs49,1evmw0m,u2prft,1yvdma9,f7x1l0,f3wvvv,1ms0ipo,1esfa5q,2cfyjr,4p1mpv,45h,45h,15mq668,1ofreq1,pvndgu,yzb04g,1i0q3rg,13k5tah,45h,fbmwg2,1ba48vy,1jrz14u,1esgm3d,14f48xd,1ooxegv,gosy68,pkhblh,nzync0,u8hwu8,14f44qv,5djdhf,1hlc4pp,1hj5ikl,1ycsyep,1b5ckjf,krytih,3t42,5y0w05,1n3o9cc,ya6bvn,szl8v6,89pnk5,nwtkqv,3t42,45h,11i8uav,k733vu,1ajmpnj,1xwt9x3,1w18bgz,3sltgg,2v8bza,1ov5t3i,n6tu3v,6evvbl,e2f9oh,3t42,1f0e09x,1mdhsle,ol57r2,mxcpw4,1r8lrbb,1fkqrzj,b6at4t,3t42,6smdiu,13tf2lu,1qoq1k4,dmx54q,1ht7ph,1blgbzs,1kqv2vu,12e7oyo,1n51g37,l0rccl,1fy71ok,1q10b2p,1hrz0y8,1209jen,1bof3s4,1c3r3b0,3t42,1rs8mg1,9o55kr,16p04gy,19dbut9,1cffoik,173v7s3,3t42,29wwwc,1w9ilyv,5yc2pk,3t42,3gqt6b,nh1byw,5xjwda,qveuaf,1wyuesg,ixyr5z,9ghq9z,1gc3so7,t4m96u,1y5bqyd,4p1mpv,45h,45h,5i3b4t,1xrcxhn,zlq6jz,1co7kyw,mpsjqw,1ewll1s,127vqt4,1cxefdu,3t42,10eo9ow,gih3at,8tr1zy,3u1mow,npvb1u,186afuo,3t42,1kbnux7,1ed5j9b,ob1hy0,1komj6e,1g4my5s,13o31e5,1a1p4h9,1epdkab,13fdc9,1afhuez,k3hhoj,1t0fuy4,10qfj5l,28yswu,9l5zo0,go02td,recid7,1p1n3st,btljom,1k4b0d4,1m0rwqg,12m3nzp,184411k,pb83eo,qex9z9,uruiau,1u5fj06,1jgo6bx,rxtd3t,1syi5e8,k59hzk,xa70i2,5ob0u5,39mlbr,2c3d24,3t42,12cgwb6,r2g4bg,nr6fj7,1agkeqy,1ucckt7,a9t5ce,1eb9g6n,1tck2jv,xie9i6,jn4dd8,afrhee,4p1mpv,a0e9f6,1q7fk3r,zdhwu2,1xo53e9,m7tyx3,17mwk9x,856dm6,4p1mpv,45h,45h,1rz66cg,1a4r4pb,1nwl547,1cli8lf,1k21uge,15uujl2,1rjc1hh,kmd943,1x3rz6w,145a2z0,4xje6t,2b02l6,49yxb7,7pjxcz,1f7xi9v,3t42,4gjlje,1cmt6gs,lsig5b,11c1p7g,4fp7f6,1hbn87o,1fu90z,1yn6l0p,1mv0dag,3t42,1rxx8i0,1mzg167,yiqc7t,a4vd0y,1q5sg8l,1w5lc9m,r9jrjs,73lk6j,1j1y9o6,v4965u,ubkhgk,sypkmh,3t42,snd8kh,bzp0iz,45h,45h,34mem9,17ttoko,shugfi,lyeh1o,45h,45h,xt9es3,e6mrq6,19jf4o5,13qfbdu,12csiwi,1u76k1s,cak5a4,cuhkju,w1r97r,1zwp7s,1j61xpl,104jx4a,1f3yaia,j6tuup,1yu5ae2,3t42,12wo2sy,1wk5axz,t39zoy,18l0kwf,3t42,4xny1a,kbe11o,1opddq8,9cxq17,ollu14,10mconl,k20tiu,1li778e,ean571,1d4tt3l,19vq7hz,b9n1i6,i0f455,15nrj0n,4p1mpv,1vee9iy,1lsw3mv,yqpt0l,z67d9x,le94a7,4p1mpv,45h,45h,1798uk9,1twzyu5,1ug0sl3,o8xdzu,46iw13,edmv6t,4m8p8u,rbu5hv,1dlxam7,1xsexjj,1s56qdi,spwt87,ljy3jx,7arcgs,3t42,1xlo8y9,g6tkoe,16r8b9b,13ff4o5,1460sh4,1gmxj8g,9xwie6,4p1mpv,1u713fo,1be4aju,1nw60y6,12ioim2,jlpurp,1qkgjr2,1ii1802,k1mxem,atdgwd,1d0xz6c,k6m8z4,4htjgx,1lo6g2d,dcg6bj,1ni5wjx,1v3kcmy,d9yf9t,17wm0xy,fzrcxb,1fss9kf,9ycyfa,4p1mpv,1wu304m,17t588w,g4ocpq,8z423d,1dme2zp,1fr5x3z,18jrz3s,va2myq,5a9w7o,i0dnds,11gzynk,146818n,rfz7lv,4p1mpv,1h08x82,181g6ro,89hilc,h05u1l,4p1mpv,45h,45h,1joffur,1y8z37y,c1iv3g,1axbe4q,1v4dkcw,saoql6,3t42,vqzkjs,1g3vnud,tmhwic,1caf9j1,lam5ox,1uhk600,zt5g62,1l13c8n,7ufy7e,3t42,45h,45h,zrwfyq,e6mrq6,4kfmow,12117nk,51w5xj,1ywlc0i,13i7tda,15vevsp,3t42,cr6phb,1hca3jk,v4ixf9,84j3h7,hkbyqd,17gbvd,3t42,1go7sbd,1dgdh3q,1bq1cqa,1e555ru,18vzbo5,147zkq0,x53t97,17rcg3p,1ikuayy,asbmtb,8r1l96,1hhh77j,3t42,wifaef,q4tf4t,1w0ttei,4p1mpv,493vbc,it3dpo,4p1mpv,45h,45h,1tsmdff,1u1vd8p,jt61wi,158d2xw,cp7kjb,cwcju4,wdhdg,8rhh0x,1ttyq5e,11ll34w,89soiq,lhkwvr,sf4uqe,n18eiv,jdfiq5,12hh5yg,1iijgxf,17w6h47,1h2tgq2,hzq2gl,1t928sy,1br3nwg,1x6a17y,1v3m69q,1kkfh61,vgeyvr,qguat,z86w8p,bqvvhv,1xn0bad,14lx14j,tk2c42,r1cqve,13qdrxo,1xogdvz,1owj1kk,pwohqh,3t42,1vtkde7,2fnymf,1932y74,14ajn6x,1axujyt,3t42,i2br3w,32gzl2,1a8p1kk,1i6cy4b,aw1bkf,3vr867,13ezos7,zmr2gx,3t42,wrwg0a,1iqdzmn,spbul6,4p1mpv,jopfrw,1qag2dg,d9eql9,1pelnhy,fkd9qh,9dylp4,dob4qk,xz0nbg,13p1vcw,1a5fwei,gn4r10,1oq1ooy,2o1qlu,62qr0u,qmyizv,3t42,elzots,qzh76j,smgm3n,iwvjon,4p1mpv,1x1e33g,1lv5mrd,5oec5,1tlvszj,ji5i4,qi7cv9,1weiuwr,15t2lnw,1prqagz,1dfb3p5,1s85s3n,1hn9r11,4p1mpv,vne0mj,18j9lz7,1w7htp1,45h,45h,1bwx1p6,wnwwuj,1t1drka,719jei,1pxaq9m,6xu70u,x9f6mh,1aye1n6,1f9lyde,d2fyk2,1x12pis,vbn4pk,4p1mpv,45h,522q47,45h";
 window.onerror = function(msg, src, line, col){ if (!window.__APP_OK && !window.__BOOT_ERR) window.__BOOT_ERR = String(msg); };
@@ -196,9 +219,9 @@ setTimeout(function(){
 </script>
 <script>
 window.__APP_OK = true;
-const BOOT = <?!= boot ?>;
-let PUB = <?!= pub ?>;
-const PARAMS = <?!= params ?>;
+const BOOT = null;
+let PUB = null;
+const PARAMS = Object.fromEntries(new URLSearchParams(location.search));
 let MODE = {pilot:false, counted:true, approver:''}, ME = null, USERS = [], PERMS = {}, APPURL = '', TOKEN = '', TAB = '', STOCK = [], STOCK_AT = 0, ADM = null;
 try { TOKEN = localStorage.getItem('labstock_token') || ''; } catch (e) {}
 
