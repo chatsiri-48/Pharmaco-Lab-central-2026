@@ -42,6 +42,25 @@
   .LOW,.PENDING_APPROVAL,.PENDING,.SUBMITTED{background:#fff2d9;color:var(--warn)}
   .OUT,.REJECTED{background:#fde4e4;color:var(--bad)}
   .NC,.SELF{background:#f3ecff;color:#6a3fb5}
+  .ctool{position:sticky;top:-16px;background:#fff;z-index:3;padding:8px 0;margin:0 0 4px;border-bottom:1px solid var(--line)}
+  .ctool .row{margin:6px 0}
+  .cgrid{display:grid;grid-template-columns:minmax(0,1fr) 48px 64px 46px;gap:8px;align-items:center}
+  .chead{font-size:12px;color:var(--mute);padding:2px 2px 0;text-transform:uppercase;letter-spacing:.03em}
+  .chead span{text-align:center}
+  .cr{padding:5px 2px;border-bottom:1px solid var(--line)}
+  .cr .cn{overflow:hidden;white-space:nowrap;text-overflow:ellipsis;font-size:15px;cursor:pointer;padding:6px 0}
+  .cr .cs{text-align:center;font-weight:700;font-size:16px}
+  .cr .ci{width:64px;min-height:38px;padding:4px 6px;text-align:center;font-weight:700;font-size:16px}
+  .cr .ci::-webkit-outer-spin-button,.cr .ci::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+  .cr .ci{-moz-appearance:textfield;appearance:textfield}
+  .cr.done .ci{background:#eaf6ef;border-color:#9fd3b4}
+  .cr.diff .ci{background:#fff6e5;border-color:#f0c36d}
+  .cr .cv{text-align:center;font-weight:700;font-size:16px}
+  .cd{font-size:13px;font-weight:700;text-align:center;border-radius:99px;padding:3px 0;min-height:22px}
+  .cd.n{background:#fde4e4;color:var(--bad)} .cd.p{background:#e3ecfb;color:var(--pri)}
+  .cx{grid-column:1/-1;padding:4px 0 8px;display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+  .cx .full{flex:1 1 100%;font-size:14px;font-weight:600} .cx input.note{flex:1 1 180px;min-height:38px}
+  .savest{font-size:12px;color:var(--mute)} .savest.err{color:var(--bad)}
   .who-box{display:flex;align-items:center;gap:12px;background:#eef4ff;border:1px solid #d6e3fb;border-radius:12px;padding:10px 12px;margin:6px 0 8px}
   .who-av{flex:0 0 auto;width:42px;height:42px;border-radius:50%;background:var(--pri);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px}
   .who-box .lbl{font-size:12px;color:var(--mute);text-transform:uppercase;letter-spacing:.04em}
@@ -188,7 +207,7 @@ window.google = { script: { run: new Proxy({}, { get: function (_, first) {
 </script>
 <script>
 
-window.__APP_OK = false; window.__BOOT_ERR = null; window.__LH = "45h,1uo41ff,*,*,*,xbkqmt,k6w1y3,45h,2ltbl8,idm46q,1oxmdqi,1a6htbt,h1aq9i,kameug,45h,45h,5sk3mm,1oqot92,u7qxr3,bobx4i,y8409z,15bqelc,12wbyrr,fz7bpw,1om0j7t,45h,45h,45h,45h,1dru6ki,30n4q1,9jay5q,1slr90a,114x1fs,hvw3j6,sxsley,1u9qaiq,m6rm1d,kq7jyx,wde3s3,3o8rac,375ig2,rdyb0v,gj3apt,1h066fs,1u3rc6m,175g77i,1y8bp3u,z055ki,375ig2,ljlq30,sxjvcl,1k6ei7i,yixusd,3t42,dek9se,1nb6r4f,1i28pe1,1uwau01,havmmb,cilc19,1byz2i5,45h,1u501mo,1yv1zbq,v7mrqt,14xjwb2,90gs1m,1jak7gx,m9vo64,199fatc,1uh0qpi,2v8bza,3t42,45h,zyjsbb,n9a2l3,far276,45h,45h,1bqs1x8,odweb2,1ja07zc,bkngns,1q3ifwz,cbwzhj,3t42,45h,wapa67,45h,1aeouhf,gd6jhw,17pr02b,4pp52u,1djvud1,1xzvfof,12ij70o,1nflijl,1tusoqg,3jesgu,1026mgo,2v8bza,3t42,bmpxyf,14se6im,14zjs2l,3t42,1eqwnmr,4n3hih,45h,45h,12ucn3d,1wagyvz,1rcvhxj,tzgck9,v4yg3k,ky8k10,8bgedy,oqky00,56gz67,375ig2,3t42,s18yd,th5afe,16xsf9b,55ahu0,w5hmk7,1ar7v5d,21gnqv,13x9p69,3t42,45h,1vbd5wi,1v4ksfa,1kc1jjd,53hu2k,18j9lz7,w7vrp4,cfqbwi,1wsb30b,1xd5dpr,1i8hdtf,n9g30c,1fyncqd,3t42,1lhm4ba,1qozal1,i7nrbs,68tx62,13u7qum,ex4qc9,j4ga8y,7ju108,17plfzq,gqjdhl,2i234m,1inly4w,1o0tbuo,ljccre,sfbhbh,ss67p4,j85s2t,ijfxmt,9o81j3,3t42,99s8g6,1i1ga5t,iw0d0s,1nzlxph,1in3med,1fvyu7t,l30s7u,1hqjj5a,18g74k9,375ig2,b69upe,1dke7ch,uu8tdy,75509g,ed3gzn,1xcv5o6,17735z0,4p1mpv,o9zx4,i4wj2l,rmwlou,swqmbg,d5s45o,r02qww,45h,45h,sl6y3y,1j2wqa,t7dfnb,rkkms9,hnb8jm,16ecqap,t3v482,1qay747,17v96aa,3hny5,168e96i,vgffw7,9ubm9g,yte65t,alen1x,1tnjg67,9484dl,83f4iw,g4j80l,3z22lc,3t42,45h,45h,1elu3j,1maq578,yvrir9,j62lme,3t42,5rjcfv,s3xlqo,rtlqgd,15ge45m,1yu97n7,17nda3x,19w03p5,1ayd69a,138kdzn,3vxccs,1xjhhgr,9ug6ng,3t42,za0ept,1u7vu7k,1r49x3c,ifg1tp,168aswu,1hj0tc3,1lpizan,3t42,uo4ag6,1t6gpoa,1iot7v9,1x41kqz,4p1mpv,1y2vs49,1evmw0m,u2prft,1yvdma9,f7x1l0,f3wvvv,1ms0ipo,1esfa5q,2cfyjr,4p1mpv,45h,45h,15mq668,1ofreq1,pvndgu,yzb04g,1i0q3rg,13k5tah,45h,fbmwg2,1ba48vy,1jrz14u,1esgm3d,14f48xd,1ooxegv,gosy68,pkhblh,nzync0,u8hwu8,14f44qv,5djdhf,1hlc4pp,1hj5ikl,1ycsyep,1b5ckjf,krytih,3t42,5y0w05,1n3o9cc,ya6bvn,szl8v6,89pnk5,nwtkqv,3t42,45h,11i8uav,k733vu,1ajmpnj,1xwt9x3,1w18bgz,3sltgg,2v8bza,1ov5t3i,n6tu3v,6evvbl,e2f9oh,3t42,1f0e09x,1mdhsle,ol57r2,mxcpw4,1r8lrbb,1fkqrzj,b6at4t,3t42,6smdiu,13tf2lu,1qoq1k4,dmx54q,1ht7ph,1blgbzs,1kqv2vu,12e7oyo,1n51g37,l0rccl,1fy71ok,1q10b2p,1hrz0y8,1209jen,1bof3s4,1c3r3b0,3t42,1rs8mg1,9o55kr,16p04gy,19dbut9,1cffoik,173v7s3,3t42,29wwwc,1w9ilyv,5yc2pk,3t42,3gqt6b,nh1byw,5xjwda,qveuaf,1wyuesg,ixyr5z,9ghq9z,1gc3so7,t4m96u,1y5bqyd,4p1mpv,45h,45h,5i3b4t,1xrcxhn,zlq6jz,1co7kyw,mpsjqw,1ewll1s,127vqt4,1cxefdu,3t42,10eo9ow,gih3at,8tr1zy,3u1mow,npvb1u,186afuo,3t42,1kbnux7,1ed5j9b,ob1hy0,1komj6e,1g4my5s,13o31e5,1a1p4h9,1epdkab,13fdc9,1afhuez,k3hhoj,1t0fuy4,10qfj5l,28yswu,9l5zo0,go02td,recid7,1p1n3st,btljom,1k4b0d4,1m0rwqg,12m3nzp,184411k,pb83eo,qex9z9,uruiau,1u5fj06,1jgo6bx,rxtd3t,1syi5e8,k59hzk,xa70i2,5ob0u5,39mlbr,2c3d24,3t42,12cgwb6,r2g4bg,nr6fj7,1agkeqy,1ucckt7,a9t5ce,1eb9g6n,1tck2jv,xie9i6,jn4dd8,afrhee,4p1mpv,a0e9f6,1q7fk3r,zdhwu2,1xo53e9,m7tyx3,17mwk9x,856dm6,4p1mpv,45h,45h,1rz66cg,1a4r4pb,1nwl547,1cli8lf,1k21uge,15uujl2,1rjc1hh,kmd943,1x3rz6w,145a2z0,4xje6t,2b02l6,49yxb7,7pjxcz,1f7xi9v,3t42,4gjlje,1cmt6gs,lsig5b,11c1p7g,4fp7f6,1hbn87o,1fu90z,1yn6l0p,1mv0dag,3t42,1rxx8i0,1mzg167,yiqc7t,a4vd0y,1q5sg8l,1w5lc9m,r9jrjs,73lk6j,1j1y9o6,v4965u,ubkhgk,sypkmh,3t42,snd8kh,bzp0iz,45h,45h,34mem9,17ttoko,shugfi,lyeh1o,45h,45h,xt9es3,e6mrq6,19jf4o5,13qfbdu,12csiwi,1u76k1s,cak5a4,cuhkju,w1r97r,1zwp7s,1j61xpl,104jx4a,1f3yaia,j6tuup,1yu5ae2,3t42,12wo2sy,1wk5axz,t39zoy,18l0kwf,3t42,4xny1a,kbe11o,1opddq8,9cxq17,ollu14,10mconl,k20tiu,1li778e,ean571,1d4tt3l,19vq7hz,b9n1i6,i0f455,15nrj0n,4p1mpv,1vee9iy,1lsw3mv,yqpt0l,z67d9x,le94a7,4p1mpv,45h,45h,1798uk9,1twzyu5,1ug0sl3,o8xdzu,46iw13,edmv6t,4m8p8u,rbu5hv,1dlxam7,1xsexjj,1s56qdi,spwt87,ljy3jx,7arcgs,3t42,1xlo8y9,g6tkoe,16r8b9b,13ff4o5,1460sh4,1gmxj8g,9xwie6,4p1mpv,1u713fo,1be4aju,1nw60y6,12ioim2,jlpurp,1qkgjr2,1ii1802,k1mxem,atdgwd,1d0xz6c,k6m8z4,4htjgx,1lo6g2d,dcg6bj,1ni5wjx,1v3kcmy,d9yf9t,17wm0xy,fzrcxb,1fss9kf,9ycyfa,4p1mpv,1wu304m,17t588w,g4ocpq,8z423d,1dme2zp,1fr5x3z,18jrz3s,va2myq,5a9w7o,i0dnds,11gzynk,146818n,rfz7lv,4p1mpv,1h08x82,181g6ro,89hilc,h05u1l,4p1mpv,45h,45h,1joffur,1y8z37y,c1iv3g,1axbe4q,1v4dkcw,saoql6,3t42,vqzkjs,1g3vnud,tmhwic,1caf9j1,lam5ox,1uhk600,zt5g62,1l13c8n,7ufy7e,3t42,45h,45h,zrwfyq,e6mrq6,4kfmow,12117nk,51w5xj,1ywlc0i,13i7tda,15vevsp,3t42,cr6phb,1hca3jk,v4ixf9,84j3h7,hkbyqd,17gbvd,3t42,1go7sbd,1dgdh3q,1bq1cqa,1e555ru,18vzbo5,147zkq0,x53t97,17rcg3p,1ikuayy,asbmtb,8r1l96,1hhh77j,3t42,wifaef,q4tf4t,1w0ttei,4p1mpv,493vbc,it3dpo,4p1mpv,45h,45h,1tsmdff,1u1vd8p,jt61wi,158d2xw,cp7kjb,cwcju4,wdhdg,8rhh0x,1ttyq5e,11ll34w,89soiq,lhkwvr,sf4uqe,n18eiv,jdfiq5,12hh5yg,1iijgxf,17w6h47,1h2tgq2,hzq2gl,1t928sy,1br3nwg,1x6a17y,1v3m69q,1kkfh61,vgeyvr,qguat,z86w8p,bqvvhv,1xn0bad,14lx14j,tk2c42,r1cqve,13qdrxo,1xogdvz,1owj1kk,pwohqh,3t42,1vtkde7,2fnymf,1932y74,14ajn6x,1axujyt,3t42,i2br3w,32gzl2,1a8p1kk,1i6cy4b,aw1bkf,3vr867,13ezos7,zmr2gx,3t42,wrwg0a,1iqdzmn,spbul6,4p1mpv,jopfrw,1qag2dg,d9eql9,1pelnhy,fkd9qh,9dylp4,dob4qk,xz0nbg,13p1vcw,1a5fwei,gn4r10,1oq1ooy,2o1qlu,62qr0u,qmyizv,3t42,elzots,qzh76j,smgm3n,iwvjon,4p1mpv,1x1e33g,1lv5mrd,5oec5,1tlvszj,ji5i4,qi7cv9,1weiuwr,15t2lnw,1prqagz,1dfb3p5,1s85s3n,1hn9r11,4p1mpv,vne0mj,18j9lz7,1w7htp1,45h,45h,1bwx1p6,wnwwuj,1t1drka,719jei,1pxaq9m,6xu70u,x9f6mh,1aye1n6,1f9lyde,d2fyk2,1x12pis,vbn4pk,4p1mpv,45h,522q47,45h";
+window.__APP_OK = false; window.__BOOT_ERR = null; window.__LH = "45h,1uo41ff,*,*,*,xbkqmt,k6w1y3,45h,2ltbl8,idm46q,1oxmdqi,1a6htbt,h1aq9i,kameug,45h,45h,5sk3mm,1oqot92,u7qxr3,bobx4i,y8409z,15bqelc,12wbyrr,fz7bpw,1om0j7t,45h,45h,45h,45h,1daw22t,30n4q1,9jay5q,1slr90a,114x1fs,hvw3j6,sxsley,1u9qaiq,m6rm1d,kq7jyx,wde3s3,3o8rac,375ig2,rdyb0v,gj3apt,1h066fs,1u3rc6m,175g77i,1y8bp3u,z055ki,375ig2,ljlq30,sxjvcl,1k6ei7i,yixusd,3t42,dek9se,1nb6r4f,vjlbuq,1uwau01,havmmb,cf45lz,1byz2i5,45h,1u501mo,1yv1zbq,v7mrqt,14xjwb2,90gs1m,1jak7gx,m9vo64,199fatc,1uh0qpi,2v8bza,3t42,45h,zyjsbb,n9a2l3,far276,45h,45h,1bqs1x8,odweb2,1ja07zc,bkngns,1q3ifwz,cbwzhj,3t42,45h,wapa67,45h,1aeouhf,gd6jhw,17pr02b,4pp52u,1djvud1,1xzvfof,12ij70o,1nflijl,1tusoqg,3jesgu,1026mgo,2v8bza,3t42,bmpxyf,14se6im,14zjs2l,3t42,1eqwnmr,4n3hih,45h,45h,12ucn3d,1wagyvz,1rcvhxj,tzgck9,v4yg3k,ky8k10,8bgedy,oqky00,56gz67,375ig2,3t42,s18yd,th5afe,16xsf9b,55ahu0,w5hmk7,1ar7v5d,21gnqv,13x9p69,3t42,45h,1vbd5wi,1v4ksfa,1kc1jjd,53hu2k,18j9lz7,w7vrp4,cfqbwi,1wsb30b,1xd5dpr,1i8hdtf,n9g30c,1fyncqd,3t42,1lhm4ba,1qozal1,i7nrbs,68tx62,13u7qum,ex4qc9,j4ga8y,7ju108,17plfzq,gqjdhl,2i234m,1inly4w,1o0tbuo,ljccre,sfbhbh,ss67p4,j85s2t,ijfxmt,9o81j3,3t42,99s8g6,1i1ga5t,iw0d0s,1nzlxph,1in3med,1fvyu7t,l30s7u,1hqjj5a,18g74k9,375ig2,b69upe,1dke7ch,uu8tdy,75509g,ed3gzn,1xcv5o6,17735z0,4p1mpv,o9zx4,i4wj2l,rmwlou,swqmbg,d5s45o,r02qww,45h,45h,sl6y3y,1j2wqa,t7dfnb,rkkms9,hnb8jm,16ecqap,t3v482,1qay747,17v96aa,3hny5,168e96i,vgffw7,9ubm9g,yte65t,alen1x,1tnjg67,9484dl,83f4iw,g4j80l,3z22lc,3t42,45h,45h,1elu3j,1maq578,yvrir9,j62lme,3t42,5rjcfv,s3xlqo,rtlqgd,15ge45m,1yu97n7,17nda3x,19w03p5,1ayd69a,138kdzn,3vxccs,1xjhhgr,9ug6ng,3t42,za0ept,1u7vu7k,1r49x3c,ifg1tp,168aswu,1hj0tc3,1lpizan,3t42,uo4ag6,1t6gpoa,1iot7v9,1x41kqz,4p1mpv,1y2vs49,1evmw0m,u2prft,1yvdma9,f7x1l0,f3wvvv,1ms0ipo,1esfa5q,2cfyjr,4p1mpv,45h,45h,15mq668,1ofreq1,pvndgu,yzb04g,1i0q3rg,13k5tah,45h,fbmwg2,1ba48vy,1jrz14u,1esgm3d,14f48xd,1ooxegv,gosy68,pkhblh,nzync0,u8hwu8,14f44qv,5djdhf,1hlc4pp,1hj5ikl,1ycsyep,1b5ckjf,krytih,3t42,5y0w05,1n3o9cc,ya6bvn,szl8v6,89pnk5,nwtkqv,3t42,45h,11i8uav,k733vu,1ajmpnj,1xwt9x3,1w18bgz,3sltgg,2v8bza,1ov5t3i,n6tu3v,6evvbl,e2f9oh,3t42,1f0e09x,1mdhsle,ol57r2,mxcpw4,1r8lrbb,1fkqrzj,b6at4t,3t42,6smdiu,13tf2lu,1qoq1k4,dmx54q,1ht7ph,1blgbzs,1kqv2vu,12e7oyo,1n51g37,l0rccl,1fy71ok,1q10b2p,1hrz0y8,1209jen,1bof3s4,1c3r3b0,3t42,1rs8mg1,9o55kr,16p04gy,19dbut9,1cffoik,173v7s3,3t42,29wwwc,1w9ilyv,5yc2pk,3t42,3gqt6b,nh1byw,5xjwda,qveuaf,1wyuesg,ixyr5z,9ghq9z,1gc3so7,t4m96u,1y5bqyd,4p1mpv,45h,45h,5i3b4t,1xrcxhn,zlq6jz,1co7kyw,mpsjqw,1ewll1s,127vqt4,1cxefdu,3t42,10eo9ow,gih3at,8tr1zy,3u1mow,npvb1u,186afuo,3t42,1kbnux7,1ed5j9b,ob1hy0,1komj6e,1g4my5s,13o31e5,1a1p4h9,1epdkab,13fdc9,1afhuez,k3hhoj,1t0fuy4,10qfj5l,28yswu,9l5zo0,go02td,recid7,1p1n3st,btljom,1k4b0d4,1m0rwqg,12m3nzp,184411k,pb83eo,qex9z9,uruiau,1u5fj06,1jgo6bx,rxtd3t,1syi5e8,k59hzk,xa70i2,5ob0u5,39mlbr,2c3d24,3t42,12cgwb6,r2g4bg,nr6fj7,1agkeqy,1ucckt7,a9t5ce,1eb9g6n,1tck2jv,xie9i6,jn4dd8,afrhee,4p1mpv,a0e9f6,1q7fk3r,zdhwu2,1xo53e9,m7tyx3,17mwk9x,856dm6,4p1mpv,45h,45h,1rz66cg,1a4r4pb,1nwl547,1cli8lf,1k21uge,15uujl2,1rjc1hh,kmd943,1x3rz6w,145a2z0,4xje6t,2b02l6,49yxb7,7pjxcz,1f7xi9v,3t42,4gjlje,1cmt6gs,lsig5b,11c1p7g,4fp7f6,1hbn87o,1fu90z,1yn6l0p,1mv0dag,3t42,1rxx8i0,1mzg167,yiqc7t,a4vd0y,1q5sg8l,1w5lc9m,r9jrjs,73lk6j,1j1y9o6,v4965u,ubkhgk,sypkmh,3t42,snd8kh,bzp0iz,45h,45h,34mem9,17ttoko,shugfi,lyeh1o,45h,45h,xt9es3,e6mrq6,19jf4o5,13qfbdu,12csiwi,1u76k1s,cak5a4,cuhkju,w1r97r,1zwp7s,1j61xpl,104jx4a,1f3yaia,j6tuup,1yu5ae2,3t42,12wo2sy,1wk5axz,t39zoy,18l0kwf,3t42,4xny1a,kbe11o,1opddq8,9cxq17,ollu14,10mconl,k20tiu,1li778e,ean571,1d4tt3l,19vq7hz,b9n1i6,i0f455,15nrj0n,4p1mpv,1vee9iy,1lsw3mv,yqpt0l,z67d9x,le94a7,4p1mpv,45h,45h,1798uk9,1twzyu5,1ug0sl3,o8xdzu,46iw13,edmv6t,4m8p8u,rbu5hv,1dlxam7,1xsexjj,1s56qdi,spwt87,ljy3jx,1lira1h,rssz7g,3t42,1xlo8y9,g6tkoe,16r8b9b,13ff4o5,1460sh4,1gmxj8g,9xwie6,4p1mpv,z8336q,1u713fo,ylllo0,15gz2r1,34c371,1kgqb0z,n4ay0z,ikw63v,12ioim2,1p56m8b,1r8i4jt,s6lqc8,1lrdbfx,7j21od,16j40dx,h55tre,b9jrqz,1pu8sge,fkj5cc,67lj1i,wmsb1t,17wm0xy,1wqj6sv,1431bwg,1xnojyu,4p1mpv,16jc20n,uwm0r9,av9aa0,1olll9i,1kny7h5,1fx24dw,1f92glj,1yyswex,1t0yy3j,1emnp34,1nbioru,1wleq68,1yt89qj,1vgimbe,yp6oox,3t42,ytqohe,a23ijm,i5r212,1k3mzqz,4nrkcd,1hio92r,1t3x363,1e5vglx,1gg05ga,1cqu39v,u1t00s,1ywdlhu,1sywokz,3t42,1rn13b7,1sk5y8v,1srkwgp,12kv3s0,10rtqxf,17f4bua,3t42,i4n96g,699g99,z13hik,1mkrfu1,c8olrn,2648t0,1u0kqwu,kffxds,1cvuzw5,1hli4g5,1kf9xua,8w9s3g,xdhlg3,17t68jd,766h9h,1vb7094,1xaivhz,1xc7sth,1vu3dq5,u9omz0,1b0lm0k,jltia,1wagyvz,nicvgi,1ms98e5,t62f8z,ovx2vi,3t42,148vyv6,1jkjdor,1bmtcc1,17gy0k4,1kecucv,52f9fh,ba5gfp,79ey2r,o25qbq,yzcadq,19y90rz,1v6l1kl,1cw05qt,4p1mpv,1h08x82,181g6ro,89hilc,h05u1l,4p1mpv,45h,45h,1joffur,1y8z37y,c1iv3g,1axbe4q,1v4dkcw,saoql6,3t42,vqzkjs,1g3vnud,tmhwic,1caf9j1,lam5ox,1uhk600,zt5g62,1l13c8n,7ufy7e,3t42,45h,45h,zrwfyq,e6mrq6,4kfmow,12117nk,51w5xj,1ywlc0i,13i7tda,15vevsp,3t42,cr6phb,1hca3jk,v4ixf9,84j3h7,hkbyqd,17gbvd,3t42,1go7sbd,1dgdh3q,1bq1cqa,1e555ru,18vzbo5,147zkq0,x53t97,17rcg3p,1ikuayy,asbmtb,8r1l96,1hhh77j,3t42,wifaef,q4tf4t,1w0ttei,4p1mpv,493vbc,it3dpo,4p1mpv,45h,45h,1tsmdff,1u1vd8p,jt61wi,158d2xw,cp7kjb,cwcju4,wdhdg,8rhh0x,1ttyq5e,11ll34w,89soiq,lhkwvr,sf4uqe,n18eiv,jdfiq5,12hh5yg,1iijgxf,17w6h47,1h2tgq2,hzq2gl,1t928sy,1br3nwg,1x6a17y,1v3m69q,1kkfh61,vgeyvr,qguat,z86w8p,bqvvhv,1xn0bad,14lx14j,tk2c42,r1cqve,13qdrxo,1xogdvz,1owj1kk,pwohqh,3t42,1vtkde7,2fnymf,1932y74,14ajn6x,1axujyt,3t42,i2br3w,32gzl2,1a8p1kk,1i6cy4b,aw1bkf,3vr867,13ezos7,zmr2gx,3t42,wrwg0a,1iqdzmn,spbul6,4p1mpv,jopfrw,1qag2dg,d9eql9,1pelnhy,fkd9qh,9dylp4,dob4qk,xz0nbg,13p1vcw,1a5fwei,gn4r10,1oq1ooy,2o1qlu,62qr0u,qmyizv,3t42,elzots,qzh76j,smgm3n,iwvjon,4p1mpv,1x1e33g,1lv5mrd,5oec5,1tlvszj,ji5i4,qi7cv9,1weiuwr,15t2lnw,1prqagz,1dfb3p5,1s85s3n,1hn9r11,4p1mpv,vne0mj,18j9lz7,1w7htp1,45h,45h,1bwx1p6,wnwwuj,1t1drka,719jei,1pxaq9m,6xu70u,x9f6mh,1aye1n6,1f9lyde,d2fyk2,1x12pis,vbn4pk,4p1mpv,45h,522q47,45h";
 window.onerror = function(msg, src, line, col){ if (!window.__APP_OK && !window.__BOOT_ERR) window.__BOOT_ERR = String(msg); };
 function __h(t){ t = t.replace(/\r/g, ''); var h = 5381; for (var i = 0; i < t.length; i++) h = ((h << 5) + h + t.charCodeAt(i)) | 0; return (h >>> 0).toString(36); }
 function __esc(t){ return String(t).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
@@ -196,7 +215,7 @@ function __diff(){
   try {
     var sc = document.getElementsByTagName('script'), main = sc[sc.length - 1], exp = window.__LH.split(',');
     for (var k = 0; k < sc.length; k++) if (/const BOOT =/.test(sc[k].textContent)) main = sc[k];
-    var got = main.textContent.split('\n'), out = [], base = 197;
+    var got = main.textContent.split('\n'), out = [], base = 216;
     for (var i = 0; i < Math.max(got.length, exp.length) && out.length < 4; i++) {
       if (exp[i] === '*') continue;
       if (i >= got.length || i >= exp.length || __h(got[i]) !== exp[i])
@@ -213,7 +232,7 @@ setTimeout(function(){
     '<h2 style="font-size:18px;margin:0 0 8px">Lab Stock could not start</h2>' +
     '<p>The page script did not run' + (window.__BOOT_ERR ? ':<br><code style="font-size:13px;word-break:break-word">' + __esc(window.__BOOT_ERR) + '</code>' : '.') + '</p>' +
     '<p style="font-size:13px;background:#f6f2ff;border-radius:10px;padding:10px;word-break:break-word"><code>' + __diff() + '</code></p>' +
-    '<p style="color:#667085;font-size:13px">Please send a screenshot of this box. Build: LS-2026-11-01a</p>' +
+    '<p style="color:#667085;font-size:13px">Please send a screenshot of this box. Build: LS-2026-11-03a</p>' +
     '<button onclick="location.reload()" style="font:inherit;border:0;border-radius:10px;padding:10px 16px;background:#1f5fbf;color:#fff">Try again</button></div>';
 }, 8000);
 </script>
@@ -246,7 +265,7 @@ function toast(m, err){ const t=$('#toast'); t.textContent=m; t.className=err?'e
 
 
 
-const READS = ['boot','stock','itemHistory','ledger','listRequests','listCounts','getCount','listUsers'];
+const READS = ['boot','stock','itemHistory','ledger','listRequests','listCounts','getCount','listUsers','saveCountDraft'];
 let READING = 0, WRITING = 0, LAST_BTN = null, LAST_AT = 0, waitTimer = null, slowTimer = null;
 document.addEventListener('click', e => { const b = e.target.closest('button'); if (b && !b.closest('nav')) { LAST_BTN = b; LAST_AT = Date.now(); } }, true);
 function busy(on){ READING = Math.max(0, READING + (on ? 1 : -1)); $('#busy').style.display = READING ? 'block' : 'none'; }
@@ -274,10 +293,10 @@ function startWork(label){
 }
 const LABELS = {createRequest:'Submitting request…', approveRequest:'Saving…', cancelRequest:'Cancelling…', issueRequest:'Issuing items…',
   confirmReceipt:'Saving…', approveIssue:'Approving & issuing…', saveSettings:'Saving settings…', pilotLogin:'Signing in…', pilotRegister:'Registering…', receiveStock:'Saving receipt…', adjustStock:'Saving adjustment…', createCount:'Creating count…',
-  submitCount:'Submitting count…', reviewCount:'Saving review…', saveUser:'Saving user…', saveRole:'Saving role…', deleteRole:'Deleting…',
+  submitCount:'Finishing count…', reviewCount:'Saving review…', saveUser:'Saving user…', saveRole:'Saving role…', deleteRole:'Deleting…',
   saveItem:'Saving item…', deleteItem:'Deleting…', sendLowStockSummary:'Sending email…', requestOtp:'Sending code…', verifyOtp:'Signing in…'};
 function openModal(html){ $('#mbody').innerHTML = html; $('#modal').classList.remove('hidden'); $('#modal').scrollTop = 0; document.body.style.overflow='hidden'; }
-function closeModal(){ $('#modal').classList.add('hidden'); $('#modal').classList.remove('sheet'); document.body.style.overflow=''; if (TAB === 'newreq') syncRows(); }
+function closeModal(){ if (CNT) { const c = CNT; CNT = null; if (c.dirty.size) cntSave(c); if (TAB === 'count') viewCount(); } $('#modal').classList.add('hidden'); $('#modal').classList.remove('sheet'); document.body.style.overflow=''; if (TAB === 'newreq') syncRows(); }
 function stale(){ STOCK_AT = 0; }
 
 function ask(msg, okLabel, danger){
@@ -748,7 +767,8 @@ async function viewCount(){
   const t = NAV, list = await call('listCounts'); if (moved(t)) return;
   put('#cList', tbl([{h:'Code',main:1},{h:'Type'},{h:'Created by'},{h:'Counted by'},{h:'Date'},{h:'Status'}],
     list.map(s => ({attrs:`class="click" data-id="${esc(s.SessionID)}" onclick="openCount(this.dataset.id)"`,
-      cells:[esc(s.SessionID), TYPE_TXT[s.Type], esc(uname(s.CreatedBy)), esc(uname(s.AssignedTo)), fmt(s.CreatedAt), badge(s.Status)]})), 'No counts yet'));
+      cells:[esc(s.SessionID), TYPE_TXT[s.Type], esc(uname(s.CreatedBy)), esc(uname(s.AssignedTo)), fmt(s.CreatedAt),
+        s.Status === 'PENDING' && s.done ? `<span class="badge PENDING">In progress ${s.done}/${s.total}</span>` : badge(s.Status)]})), 'No counts yet'));
 }
 function newCount(type){ act(async () => {
   const p = {type};
@@ -758,41 +778,110 @@ function newCount(type){ act(async () => {
   const r = await call('createCount', p);
   toast('Created ' + r.sessionId); await viewCount(); if (type !== 'HANDOVER') openCount(r.sessionId);
 }); }
+let CNT = null;
 function openCount(id){ act(async () => {
-  const {session:s, lines} = await call('getCount', {sessionId:id});
-  const canCount = s.Status === 'PENDING' && (String(s.AssignedTo).toLowerCase() === ME.email || can('REVIEW_COUNT'));
+  const d = await call('getCount', {sessionId:id}), s = d.session;
+  const editable = s.Status === 'PENDING' && (String(s.AssignedTo).toLowerCase() === ME.email || can('REVIEW_COUNT'));
+  CNT = { s, editable, canFinish: !!d.canFinish, q: '', dirty: new Set(), timer: null, saving: false, err: false, open: null,
+    lines: d.lines.map(l => ({ id: String(l.ItemID), name: String(l.ItemName), sys: Number(l.SystemQty) || 0,
+      c: l.CountedQty === '' || l.CountedQty === null ? '' : Number(l.CountedQty), note: String(l.Note || ''), diff: l.Diff })) };
+  CNT.f = editable ? 'all' : (CNT.lines.some(l => cntDiff(l)) ? 'diff' : 'all');
   const canReview = s.Status === 'SUBMITTED' && can('REVIEW_COUNT');
-  const rows = lines.map(l => canCount
-    ? [esc(l.ItemName), l.SystemQty, `<input type="number" inputmode="numeric" min="0" step="1" data-cnt="${esc(l.ItemID)}" data-sys="${l.SystemQty}" oninput="markDiff(this)">`,
-       `<span data-d="${esc(l.ItemID)}"></span>`, `<input data-cn="${esc(l.ItemID)}" style="width:100%">`]
-    : [esc(l.ItemName), l.SystemQty, l.CountedQty===''?'-':l.CountedQty,
-       `<span class="${l.Diff>0?'diffp':l.Diff<0?'diffn':''}">${l.Diff===''?'':signed(l.Diff)}</span>`, esc(l.Note)]);
-  openModal(`<h2 style="padding-right:40px">${TYPE_TXT[s.Type]} ${esc(s.SessionID)} ${badge(s.Status)}</h2>
-    <p class="mute">Created by ${esc(uname(s.CreatedBy))} · ${fmt(s.CreatedAt)}<br>Counted by: ${esc(uname(s.AssignedTo))}${s.SubmittedAt?' · submitted '+fmt(s.SubmittedAt):''}
-     ${s.ReviewedAt?'<br>Reviewed by '+esc(uname(s.ReviewedBy))+' · '+fmt(s.ReviewedAt):''}${s.Note?'<br>Note: '+esc(s.Note):''}</p>
-    ${canCount && !MODE.counted ? '<div class="note-box">This is the first stock count. Enter what is physically on the shelf for every item. "System" shows only what was recorded during the pilot (it may be negative), so do not copy it.</div>' : ''}
-    ${canCount && MODE.counted?'<div class="row noprint"><button class="b sec sm" onclick="fillSys()">Fill blanks with system balance (then fix only the differences)</button></div>':''}
-    ${tbl([{h:'Item',main:1},{h:'System',n:1},{h:'Counted',n:1},{h:'Difference',n:1},{h:'Note'}], rows)}
-    ${canCount?`<div class="bar"><span class="mute" id="cntSum"></span><button class="b ok" onclick="submitCnt('${esc(s.SessionID)}')">Submit count</button></div>`:''}
-    ${canReview?`<div class="card" style="margin-top:12px"><h3>Review count</h3><input id="rvNote" placeholder="Review outcome / reason (required)" style="width:100%">
+  const meta = [`${esc(uname(s.AssignedTo))}`, fmt(s.CreatedAt), s.SubmittedAt ? 'finished ' + fmt(s.SubmittedAt) : ''].filter(Boolean).join(' · ');
+  openModal(`<h2 style="padding-right:40px;margin-bottom:2px">${TYPE_TXT[s.Type]} ${badge(s.Status)}</h2>
+    <p class="mute" style="margin:0 0 4px">${esc(s.SessionID)} · ${meta}${s.Note ? '<br>' + esc(s.Note) : ''}</p>
+    ${editable && !MODE.counted ? '<div class="note-box" style="margin:6px 0">First count: enter what is on the shelf. Ignore “System”.</div>' : ''}
+    <div class="ctool"><input id="cq" type="search" placeholder="Search item..." oninput="CNT.q=this.value;cntFilter()" style="width:100%">
+      <div class="row sb"><div class="seg" id="cseg"></div><span class="savest" id="csave"></span></div>
+      <div class="cgrid chead"><span style="text-align:left">Item</span><span>System</span><span>${editable ? 'Count' : 'Counted'}</span><span>±</span></div></div>
+    <div id="clist"></div>
+    ${editable ? `<div class="bar"><span class="mute" id="cprog"></span><div class="row" style="margin:0">
+        ${MODE.counted ? '<button class="b sec sm" onclick="cntFillSys()">Fill blanks</button>' : ''}
+        <button class="b ok" onclick="cntFinish()">${CNT.canFinish ? 'Finish &amp; update stock' : 'Submit count'}</button></div></div>` : ''}
+    ${canReview ? `<div class="card" style="margin-top:12px"><h3>Review count</h3><input id="rvNote" placeholder="Review outcome / reason (required)" style="width:100%">
       <div class="row"><button class="b" onclick="reviewCnt('${esc(s.SessionID)}',true)">Confirm and adjust to counted</button>
-      <button class="b sec" onclick="reviewCnt('${esc(s.SessionID)}',false)">Close without adjusting</button></div></div>`:''}
-    <div class="row noprint"><button class="b sec sm" onclick="window.print()">Print</button></div>`);
-  if (canCount) cntSum();
+      <button class="b sec" onclick="reviewCnt('${esc(s.SessionID)}',false)">Close without adjusting</button></div></div>` : ''}
+    <div class="row noprint"><button class="link" onclick="window.print()">Print</button></div>`);
+  cntRender();
 }); }
-function markDiff(i){ const d = i.value === '' ? '' : Number(i.value) - Number(i.dataset.sys);
-  const c = [...document.querySelectorAll('[data-d]')].find(x => x.dataset.d === i.dataset.cnt);
-  c.textContent = d === '' ? '' : signed(d); c.className = d > 0 ? 'diffp' : d < 0 ? 'diffn' : ''; cntSum(); }
-function cntSum(){ const all = [...document.querySelectorAll('input[data-cnt]')], done = all.filter(i => i.value !== '').length;
-  const diff = all.filter(i => i.value !== '' && Number(i.value) !== Number(i.dataset.sys)).length;
-  const el = $('#cntSum'); if (el) el.textContent = `Entered ${done}/${all.length}${diff?` · ${diff} mismatch${diff===1?'':'es'}`:''}`; }
-function fillSys(){ document.querySelectorAll('input[data-cnt]').forEach(i => { if (i.value === '') { i.value = i.dataset.sys; markDiff(i); } }); }
-function submitCnt(id){ act(async () => {
-  const notes = {}; document.querySelectorAll('input[data-cn]').forEach(n => notes[n.dataset.cn] = n.value);
-  const lines = [...document.querySelectorAll('input[data-cnt]')].map(i => ({itemId:i.dataset.cnt, counted:i.value, note:notes[i.dataset.cnt]||''}));
-  if (lines.some(l => l.counted === '')) throw new Error('Please enter a count for every item');
-  const r = await call('submitCount', {sessionId:id, lines});
-  closeModal(); toast(r.diffCount ? `Submitted: ${r.diffCount} mismatch(es) — reviewers notified` : 'Submitted: everything matches'); viewCount();
+const cntDiff = l => l.c === '' ? 0 : l.c - l.sys;
+function cntRowHtml(l){
+  const d = CNT.editable ? cntDiff(l) : (l.diff === '' || l.diff == null ? 0 : Number(l.diff));
+  const dCls = d < 0 ? 'n' : d > 0 ? 'p' : '';
+  const val = CNT.editable
+    ? `<input class="ci" type="number" inputmode="numeric" min="0" step="1" value="${l.c}" data-id="${esc(l.id)}" oninput="cntInput(this)" onkeydown="cntKey(event,this)">`
+    : `<span class="cv">${l.c === '' ? '—' : l.c}</span>`;
+  const open = CNT.open === l.id;
+  return `<div class="cgrid cr ${l.c !== '' ? 'done' : ''} ${CNT.editable && d ? 'diff' : ''}" data-id="${esc(l.id)}">
+    <div class="cn" onclick="cntToggle('${esc(l.id)}')" title="${esc(l.name)}">${esc(l.name)}${l.note ? ' <span class="mute">✎</span>' : ''}</div>
+    <span class="cs">${l.sys}</span>${val}<span class="cd ${dCls}">${d ? signed(d) : ''}</span>
+    ${open ? `<div class="cx"><span class="full">${esc(l.name)} <span class="mute">${esc(l.id)}</span></span>
+      ${CNT.editable ? `<button class="b sec sm" onclick="cntSet('${esc(l.id)}',${l.sys})">= System (${l.sys})</button>
+      <div class="stp"><button type="button" onclick="cntStep('${esc(l.id)}',-1)">−</button><button type="button" onclick="cntStep('${esc(l.id)}',1)">+</button></div>
+      <input class="note" placeholder="Note (optional)" value="${esc(l.note)}" data-id="${esc(l.id)}" oninput="cntNote(this)">` : (l.note ? `<span class="mute">${esc(l.note)}</span>` : '')}</div>` : ''}</div>`;
+}
+function cntRender(){ const el = $('#clist'); if (!el || !CNT) return; el.innerHTML = CNT.lines.map(cntRowHtml).join(''); cntFilter(); }
+function cntFilter(){
+  if (!CNT) return;
+  const q = CNT.q.trim().toLowerCase();
+  const isDiff = l => CNT.editable ? cntDiff(l) !== 0 : (Number(l.diff) || 0) !== 0;
+  const todo = CNT.lines.filter(l => l.c === '').length, diffs = CNT.lines.filter(isDiff).length;
+  const seg = $('#cseg');
+  if (seg) seg.innerHTML = [['all', `All ${CNT.lines.length}`], ...(CNT.editable ? [['todo', `To count ${todo}`]] : []), ['diff', `Differences ${diffs}`]]
+    .map(([k, t]) => `<button class="${CNT.f === k ? 'on' : ''}" onclick="CNT.f='${k}';cntFilter()">${t}</button>`).join('');
+  document.querySelectorAll('#clist .cr').forEach(r => { const l = CNT.lines.find(x => x.id === r.dataset.id);
+    const ok = (!q || (l.name + ' ' + l.id).toLowerCase().includes(q)) && (CNT.f === 'all' || (CNT.f === 'todo' ? l.c === '' : isDiff(l)));
+    r.style.display = ok ? '' : 'none'; });
+  const p = $('#cprog'); if (p) p.textContent = `${CNT.lines.length - todo}/${CNT.lines.length} counted`;
+}
+function cntUpdateRow(l){
+  const r = [...document.querySelectorAll('#clist .cr')].find(x => x.dataset.id === l.id); if (!r) return;
+  const d = cntDiff(l), b = r.querySelector('.cd');
+  r.classList.toggle('done', l.c !== ''); r.classList.toggle('diff', !!d);
+  b.className = 'cd ' + (d < 0 ? 'n' : d > 0 ? 'p' : ''); b.textContent = d ? signed(d) : '';
+  const i = r.querySelector('.ci'); if (i && document.activeElement !== i) i.value = l.c;
+}
+function cntChanged(l){ CNT.dirty.add(l.id); cntUpdateRow(l); cntFilterSoft(); clearTimeout(CNT.timer); CNT.timer = setTimeout(() => cntSave(CNT), 1200); cntStatus('Unsaved changes'); }
+function cntFilterSoft(){ const todo = CNT.lines.filter(l => l.c === '').length; const p = $('#cprog'); if (p) p.textContent = `${CNT.lines.length - todo}/${CNT.lines.length} counted`;
+  const seg = $('#cseg'); if (seg) { const diffs = CNT.lines.filter(l => cntDiff(l) !== 0).length; const bs = seg.querySelectorAll('button');
+    if (bs[1]) bs[1].textContent = `To count ${todo}`; if (bs[2]) bs[2].textContent = `Differences ${diffs}`; } }
+function cntInput(i){ const l = CNT.lines.find(x => x.id === i.dataset.id); const v = i.value === '' ? '' : Math.max(0, Math.floor(Number(i.value)) || 0); l.c = v; cntChanged(l); }
+function cntSet(id, v){ const l = CNT.lines.find(x => x.id === id); l.c = v; cntChanged(l); const i = [...document.querySelectorAll('#clist .ci')].find(x => x.dataset.id === id); if (i) i.value = v; }
+function cntStep(id, d){ const l = CNT.lines.find(x => x.id === id); cntSet(id, Math.max(0, (l.c === '' ? 0 : l.c) + d)); }
+function cntNote(i){ const l = CNT.lines.find(x => x.id === i.dataset.id); l.note = i.value; CNT.dirty.add(l.id); clearTimeout(CNT.timer); CNT.timer = setTimeout(() => cntSave(CNT), 1200); cntStatus('Unsaved changes'); }
+function cntToggle(id){ CNT.open = CNT.open === id ? null : id; const l = CNT.lines.find(x => x.id === id);
+  const r = [...document.querySelectorAll('#clist .cr')].find(x => x.dataset.id === id); if (!r) return;
+  const tmp = document.createElement('div'); tmp.innerHTML = cntRowHtml(l); r.replaceWith(tmp.firstElementChild);
+  if (CNT.open) { const prev = [...document.querySelectorAll('#clist .cr')].filter(x => x.dataset.id !== id && x.querySelector('.cx'));
+    prev.forEach(p => { const pl = CNT.lines.find(x => x.id === p.dataset.id); const t2 = document.createElement('div'); t2.innerHTML = cntRowHtml(pl); p.replaceWith(t2.firstElementChild); }); }
+  cntFilter(); }
+function cntKey(e, i){ if (e.key !== 'Enter') return; e.preventDefault();
+  const all = [...document.querySelectorAll('#clist .ci')].filter(x => x.closest('.cr').style.display !== 'none'); const k = all.indexOf(i);
+  if (all[k + 1]) { all[k + 1].focus(); all[k + 1].select(); } else i.blur(); }
+function cntFillSys(){ CNT.lines.filter(l => l.c === '').forEach(l => { l.c = l.sys; CNT.dirty.add(l.id); cntUpdateRow(l); }); cntFilter(); clearTimeout(CNT.timer); cntSave(CNT); }
+function cntStatus(t, err){ const el = $('#csave'); if (el) { el.textContent = t; el.classList.toggle('err', !!err); } }
+async function cntSave(c){
+  if (!c || !c.dirty.size || c.saving) return;
+  const ids = [...c.dirty]; c.dirty.clear(); c.saving = true; if (c === CNT) cntStatus('Saving…');
+  try {
+    await call('saveCountDraft', { sessionId: c.s.SessionID, lines: ids.map(id => { const l = c.lines.find(x => x.id === id); return { itemId: id, counted: l.c, note: l.note }; }) });
+    if (c === CNT) cntStatus('Saved ' + new Date().toLocaleTimeString('en-GB', {hour:'2-digit', minute:'2-digit'}));
+  } catch (e) { ids.forEach(id => c.dirty.add(id)); if (c === CNT) cntStatus('Not saved — check connection', true); }
+  finally { c.saving = false; if (c.dirty.size && c === CNT) { clearTimeout(c.timer); c.timer = setTimeout(() => cntSave(c), 3000); } }
+}
+function cntFinish(){ act(async () => {
+  const c = CNT; if (!c) return;
+  clearTimeout(c.timer);
+  const done = c.lines.filter(l => l.c !== ''), diffs = done.filter(l => cntDiff(l) !== 0), skip = c.lines.length - done.length;
+  if (!done.length) throw new Error('Nothing has been counted yet');
+  const msg = (c.canFinish ? `${diffs.length ? plural(diffs.length, 'item') + ' will be adjusted to the counted quantity.' : 'All counted items match the system.'}`
+    : `${diffs.length ? plural(diffs.length, 'difference') + ' will be sent for review.' : 'All counted items match.'}`) +
+    (skip ? ` ${plural(skip, 'item')} not counted will stay unchanged.` : '');
+  if (!(await ask(msg, c.canFinish ? 'Finish & update stock' : 'Submit'))) return;
+  const r = await call('submitCount', { sessionId: c.s.SessionID, lines: c.lines.map(l => ({ itemId: l.id, counted: l.c, note: l.note })) });
+  c.dirty.clear(); CNT = null; stale(); closeModal();
+  toast(r.status === 'ADJUSTED' ? `Stock updated: ${plural(r.diffCount, 'item')} adjusted` : r.status === 'MATCHED' ? 'Count finished — everything matches' : `Submitted: ${r.diffCount} difference(s) sent for review`);
+  viewCount();
 }); }
 function reviewCnt(id, apply){ act(async () => {
   if (apply && !(await ask('Set the system balances to the counted quantities?', 'Adjust'))) return;
